@@ -21,10 +21,6 @@
 
 访问 [GitHub Pages 在线演示](https://91godlike.github.io/zongpu/)。演示使用虚构的只读数据，不接收注册、密码、照片或家谱资料；完整编辑与持久化功能请使用 Docker 版。
 
-也可以使用 Vercel Hobby 免费部署同一套只读演示：
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F91godlike%2Fzongpu)
-
 ## 主要功能
 
 | 功能 | 说明 |
