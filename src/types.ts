@@ -1,0 +1,14 @@
+export type Person={id:string;name:string;alias:string;gender:string;branch:string;generation:string;birth:string;birthLunar?:string;death:string;calendar:string;status:string;origin:string;residence:string;phone:string;biography:string;source:string;certainty:string;version:number;avatarId?:string};
+export type Relation={id:string;source:string;target:string;type:string;data:{start?:string;end?:string;note?:string;certainty?:string};version:number};
+export type User={id?:string;name:string;username?:string;role:string;branches:string[]|null};
+export type GraphData={people:Person[];relations:Relation[]};
+export const genderLabels:Record<string,string>={male:'男',female:'女',unknown:'不详'};
+export const relationLabels:Record<string,string>={parent:'父母子女',partner:'配偶'};
+export const certaintyLabels:Record<string,string>={verified:'已核实',pending:'待核实',disputed:'有争议'};
+export const statusLabels:Record<string,string>={living:'在世',deceased:'已故',unknown:'不详'};
+export const canEdit=(u:User|null,_p?:Partial<Person>)=>u?.role==='admin'||u?.role==='editor';
+export const emptyPerson:Omit<Person,'id'|'version'>={name:'',alias:'',gender:'unknown',branch:'',generation:'',birth:'',birthLunar:'',death:'',calendar:'unknown',status:'living',origin:'',residence:'',phone:'',biography:'',source:'',certainty:'pending'};
+export const fieldLabels:Record<string,string>={name:'姓名',alias:'曾用名',gender:'性别',branch:'家庭分组',generation:'资料记载代数',birth:'出生日期（公历）',birthLunar:'出生日期（农历）',death:'去世记载',calendar:'历法',status:'生存状态',origin:'籍贯',residence:'现居地',phone:'电话号码',biography:'人物简介',source:'资料来源',certainty:'核实状态'};
+export const solarBirth=(person:Person)=>person.calendar==='lunar'&&!person.birthLunar?'':person.birth||'';
+export const lunarBirth=(person:Person)=>person.birthLunar||(person.calendar==='lunar'?person.birth||'':'');
+export const displayedBirth=(person:Person)=>solarBirth(person)||lunarBirth(person);

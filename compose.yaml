@@ -1,0 +1,25 @@
+name: zongpu
+services:
+  app:
+    image: ${ZONGPU_IMAGE:-ghcr.io/91godlike/zongpu:1.0}
+    restart: unless-stopped
+    environment:
+      APP_ORIGIN: ${APP_ORIGIN:-}
+      FORCE_HTTPS: ${FORCE_HTTPS:-false}
+      INITIAL_ADMIN_USERNAME: ${INITIAL_ADMIN_USERNAME:-admin}
+      INITIAL_ADMIN_PASSWORD: ${INITIAL_ADMIN_PASSWORD:-admin}
+      INITIAL_ADMIN_NAME: ${INITIAL_ADMIN_NAME:-管理员}
+      DATABASE_URL: file:/app/data/zongpu.sqlite
+      UPLOAD_DIR: /app/data/uploads
+      DOCUMENT_DIR: /app/data/family-documents
+      BACKUP_DIR: /app/backups
+    volumes:
+      - ${ZONGPU_DATA_DIR:-./data}:/app/data
+      - ${ZONGPU_MANAGED_BACKUP_DIR:-./managed-backups}:/app/backups
+    ports:
+      - "${APP_BIND_IP:-0.0.0.0}:${APP_PORT:-39210}:3000"
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777

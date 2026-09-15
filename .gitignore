@@ -1,0 +1,10 @@
+node_modules/
+dist/
+data/
+backups/
+managed-backups/
+.env
+*.log
+work/
+tmp/
+.DS_Store

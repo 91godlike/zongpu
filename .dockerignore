@@ -1,0 +1,17 @@
+node_modules
+dist
+data
+backups
+managed-backups
+.env
+tests
+docs
+*.log
+.git
+.github
+implementation-*.png
+design-comparison*.png
+
+work
+tmp
+.DS_Store

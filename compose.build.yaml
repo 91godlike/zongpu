@@ -1,0 +1,6 @@
+services:
+  app:
+    build:
+      context: .
+    image: zongpu:1.0-local
+    pull_policy: never
